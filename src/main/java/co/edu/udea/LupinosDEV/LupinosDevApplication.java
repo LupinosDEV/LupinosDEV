@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @SpringBootApplication (exclude = {SecurityAutoConfiguration.class})
 public class LupinosDevApplication {
-	//push de ejemplo
 	public static void main(String[] args) {
 		SpringApplication.run(LupinosDevApplication.class, args);
 	}
