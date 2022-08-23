@@ -2,16 +2,16 @@ package co.edu.udea.LupinosDEV.modelos;
 
 public class Empresa {
     // Clase empresa
-    private String nombre = "";
-    private String telefono = "";
-    private String NIT = "";
-    private String direccion = "";
+    private String nombre;
+    private String telefono;
+    private String NIT;
+    private String direccion;
 
-        public  Empresa (String nombre, String telefono, String NIT, String direccion) {
-        this.nombre = nombre;
-        this.telefono = telefono;
-        this.NIT = NIT;
-        this.direccion = direccion;
+    public Empresa (String nombre, String telefono, String NIT, String direccion) {
+    this.nombre = nombre;
+    this.telefono = telefono;
+    this.NIT = NIT;
+    this.direccion = direccion;
     }
 
     public String getNIT() {
