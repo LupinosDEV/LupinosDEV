@@ -1,4 +1,4 @@
-package co.edu.udea.LupinosDEV.modelos;
+package co.edu.udea.LupinosDEV.entities;
 
 public class MovimientoDinero {
     //Atributos
