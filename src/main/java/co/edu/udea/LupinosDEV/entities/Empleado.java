@@ -1,3 +1,5 @@
+package co.edu.udea.LupinosDEV.entities;
+
 public class Empleado {
     private String nombreEmpleado;
     private String correoEmpleado;
