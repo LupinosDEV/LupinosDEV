@@ -11,8 +11,5 @@ public class LupinosDevApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(LupinosDevApplication.class, args);
 	}
-	//Mi primer commit
-	//Villanueva Zuly
-
 
 }
