@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>co.edu.udea</groupId>
-	<artifactId>LupinosSpring</artifactId>
+	<artifactId>LupinosDEV</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>LupinosSpring</name>
+	<name>LupinosDEV</name>
 	<description>Project LupinosDEV</description>
 	<properties>
 		<java.version>18</java.version>
@@ -23,7 +23,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-oauth2-client</artifactId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
