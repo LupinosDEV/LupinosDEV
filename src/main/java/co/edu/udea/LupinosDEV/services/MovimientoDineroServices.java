@@ -7,5 +7,5 @@ import org.springframework.stereotype.Service;
 @Service
 public class MovimientoDineroServices {
     @Autowired
-    MovimientoDineroRepository movimientoDineroRepository;
+    private MovimientoDineroRepository movimientoDineroRepository;
 }
