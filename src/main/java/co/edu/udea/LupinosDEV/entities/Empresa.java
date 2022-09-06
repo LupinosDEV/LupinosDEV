@@ -42,8 +42,8 @@ public class Empresa {
 
     }
 
-    @Autowired
-    public Empresa(Long id, String nombre, String direccion, String NIT, String telefono, String , List<Empleado> usuario, List<MovimientoDinero> movimiento, Date createdAt, Date updatedAt) {
+
+    public Empresa(Long id, String nombre, String direccion, String NIT, String telefono, List<Empleado> usuario, List<MovimientoDinero> movimiento, Date createdAt, Date updatedAt) {
         this.id = id;
         this.nombre = nombre;
         this.NIT = NIT;
@@ -127,18 +127,5 @@ public class Empresa {
         this.updatedAt = updatedAt;
     }
 
-    @Override
-    public String toString() {
-        return "Enterprise{" +
-                "id=" + id +
-                ", nombre='" + nombre + '\'' +
-                ", NIT='" + NIT + '\'' +
-                ", telefono='" + telefono + '\'' +
-                ", direccion='" + direccion + '\'' +
-                ", usuario=" + usuario +
-                ", movimiento=" + movimiento +
-                ", createdAt=" + createdAt +
-                ", updatedAt=" + updatedAt +
-                '}';
-    }
+
 }
