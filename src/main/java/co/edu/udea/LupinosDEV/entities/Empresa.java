@@ -42,7 +42,7 @@ public class Empresa {
 
     }
 
-
+    @Autowired
     public Empresa(Long id, String nombre, String direccion, String NIT, String telefono, List<Empleado> usuario, List<MovimientoDinero> movimiento, Date createdAt, Date updatedAt) {
         this.id = id;
         this.nombre = nombre;
@@ -126,6 +126,4 @@ public class Empresa {
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
     }
-
-
 }
