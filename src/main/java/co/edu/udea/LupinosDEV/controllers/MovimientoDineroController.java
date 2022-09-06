@@ -13,7 +13,7 @@ public class MovimientoDineroController {
     @Autowired
     MovimientoDineroServices movimientoDineroServices;
 
-    @GetMapping("/enterprises/{id}/movements")
+    @GetMapping()
     public void getMovimientoDinero(){
         //logica
     }
