@@ -15,10 +15,10 @@ public class UsuariosController {
 
     }
 
-    /**@GetMapping("/user/[id]")
-    public void getUsuarios(){
+    @GetMapping("/user/[id]")
+    public void getUsuariosById(){
 
-    }**/
+    }
 
     @PatchMapping("/user/[id]")
     public void patchUsuarios(){

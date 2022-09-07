@@ -30,6 +30,7 @@ public class Empleado {
     private Date updatedAt;
     private Date createdAt;
     //Constructor
+    public Empleado(){};
     public Empleado(long id, String nombreEmpleado, String correoEmpleado, Empresa empresa, Enum_RoleName rolEmpleado,
                     Profile profile, ArrayList<MovimientoDinero> movimiento, Date updatedAt, Date createdAt){
 
