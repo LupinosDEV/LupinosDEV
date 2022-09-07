@@ -1,6 +1,5 @@
 package co.edu.udea.LupinosDEV.entities;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.springframework.beans.factory.annotation.Autowired;
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -10,9 +9,8 @@ import java.util.Date;
 @Entity
 @Table(name = "empresa")
 public class Empresa {
-    // Clase empresa
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, unique = true)
     private Long id;
     @Column(name = "nombre", nullable = false, unique = true, length = 50)
@@ -25,11 +23,11 @@ public class Empresa {
     @Column(name = "direccion", nullable = false, length = 50)
     private String direccion;
 
-    @OneToMany(mappedBy = "empresa", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JsonManagedReference
+    @OneToMany
+    @JoinColumn(name = "usuario_id")
     private List<Empleado> usuario= new ArrayList<>();
-    @OneToMany(mappedBy = "empresa", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JsonManagedReference
+    @OneToMany
+    @JoinColumn(name = "usuario_id")
     private List<MovimientoDinero> movimiento = new ArrayList<>();
 
     @Column(name = "createdAt")
@@ -38,11 +36,8 @@ public class Empresa {
     @Column(name = "updatedAt")
     private Date updatedAt;
 
-    public Empresa(){
+    public Empresa(){}
 
-    }
-
-    @Autowired
     public Empresa(Long id, String nombre, String direccion, String NIT, String telefono, List<Empleado> usuario, List<MovimientoDinero> movimiento, Date createdAt, Date updatedAt) {
         this.id = id;
         this.nombre = nombre;
