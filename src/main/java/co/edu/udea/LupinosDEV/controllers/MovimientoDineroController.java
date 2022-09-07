@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -13,23 +14,33 @@ public class MovimientoDineroController {
     @Autowired
     MovimientoDineroServices movimientoDineroServices;
 
-    @GetMapping("/enterprises/{id}/movements")
-    public void getMovimientoDinero(){
-        //logica
+    @GetMapping("/movements")
+    public List<MovimientoDinero> getAllTransactions(){
+        return movimientoDineroServices.getAllTransactions();
+    }
+    @GetMapping("/movements/{id}")
+    public MovimientoDinero getTransactionById(@PathVariable("id") Long id){
+        return movimientoDineroServices.getTransactionById(id);
     }
 
     @PostMapping("/enterprises/{id}/movements")
-    public void postMovimientoDinero(@RequestBody MovimientoDinero movimientoDinero){
-        //logica
+    public MovimientoDinero postTransactionEnterprise(@RequestBody MovimientoDinero transaction){
+        return movimientoDineroServices.createOrEditTransaction(transaction);
     }
-
     @PatchMapping("/enterprises/{id}/movements")
-    public void patchMovimientoDinero(@PathVariable("id") Integer id, MovimientoDinero movimientoDinero){
-        //logica
+    public MovimientoDinero patchTransactionEnterprise(@PathVariable("id")Long id,@RequestBody MovimientoDinero transaction){
+        MovimientoDinero movement = movimientoDineroServices.getTransactionById(id);
+        movement.setConceptoMovimiento(transaction.getConceptoMovimiento());
+        movement.setMontoMovimiento(transaction.getMontoMovimiento());
+        movement.setEmpleado(transaction.getEmpleado());
+        movement.setEmpresa(transaction.getEmpresa());
+        movement.setCreateAt(transaction.getCreateAt());
+        movement.setUptadeAt(transaction.getUptadeAt());
+        return movimientoDineroServices.createOrEditTransaction(movement);
     }
 
-    @DeleteMapping ("/enterprises/{id}/movements")
-    public void deleteMovimientoDinero(@PathVariable("id") Integer id){
-        //logica
+    @DeleteMapping("/enterprises/{id}/movements")
+    public void deleteTransactionEnterprise(@PathVariable("id") Long id){
+        movimientoDineroServices.deleteTransactionById(id);
     }
 }
