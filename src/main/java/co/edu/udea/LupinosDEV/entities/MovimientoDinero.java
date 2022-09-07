@@ -4,13 +4,15 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "Movimiento Dinero")
+@Table(name = "movimientoDinero")
 public class MovimientoDinero {
     //Atributos
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @Column(name = "montoMovimiento", nullable = false)
     private long montoMovimiento;
+    @Column(name = "conceptoMovimiento", nullable = false, length = 50)
     private String conceptoMovimiento;
     @ManyToOne
     @JoinColumn(name = "empleado_id")
@@ -18,7 +20,9 @@ public class MovimientoDinero {
     @ManyToOne
     @JoinColumn(name = "empresa_id")
     private Empresa empresa;
+    @Column(name = "createAt")
     private Date createAt;
+    @Column(name = "uptadeAt")
     private Date uptadeAt;
     //Constructor
     public MovimientoDinero(){}
