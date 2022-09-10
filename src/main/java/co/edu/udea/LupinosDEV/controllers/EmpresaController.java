@@ -1,35 +1,32 @@
 package co.edu.udea.LupinosDEV.controllers;
 
-import co.edu.udea.LupinosDEV.entities.Empresa;
-import co.edu.udea.LupinosDEV.services.EmpresaServices;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
-@Controller
+@RestController
 public class EmpresaController {
-    @Autowired
-    EmpresaServices empresaServices;
 
-    @GetMapping("/enterprises/{id}/movements")
-    public void getEmpresa() {
-        //logica
+    @GetMapping("/users")
+    public void getEmpresa(){
+
     }
 
-    @PostMapping("/enterprises/{id}/movements")
-    public void postEmpresa(@RequestBody Empresa empresa){
-        //logica
+    @PostMapping("/users")
+    public void postEmpresa(){
+
     }
 
-    @PatchMapping("/enterprises/{id}/movements")
-    public void patchEmpresa(@PathVariable("id") Integer id, Empresa empres){
-        //logica
+    @GetMapping("/user/[id]")
+    public void getEmpresaById(){
+
     }
 
-    @DeleteMapping ("/enterprises/{id}/movements")
-    public void deleteEmpresa(@PathVariable("id") Integer id){
-        //logica
+    @PatchMapping("/user/[id]")
+    public void patchEmpresa(){
+
+    }
+
+    @DeleteMapping("/user/[id]")
+    public void deleteEmpresa(){
+
     }
 }
