@@ -9,6 +9,6 @@ import java.util.ArrayList;
 
 @Repository
 public interface MovimientoDineroRepository extends JpaRepository<MovimientoDinero,Long>{
-    @Query(value="select * from Transaction where employee_id in (select id from Employee where enterprise_id= ?1)", nativeQuery = true)
+    @Query(value="select * from movimientoDinero where empleado_id in (select id from Empleado where empresa_id= ?1)", nativeQuery = true)
     public abstract ArrayList<MovimientoDinero> findByEnterprise(Long id);
 }
