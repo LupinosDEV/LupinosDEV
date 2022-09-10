@@ -14,34 +14,28 @@ public class Empleado {
     private String nombreEmpleado;
     private String correoEmpleado;
     @OneToOne
-    @JoinColumn(name="usuario_id")
+    @JoinColumn(name="profile_id")
     private Profile profile;
 
     @ManyToOne
     @JoinColumn(name="empresa_id")
     private Empresa empresa;
-    @OneToMany
-    @JoinColumn(name = "rol_id")
-    private Enum_RoleName rolEmpleado;
-
-    @OneToMany(mappedBy = "Empleado")
-    private  ArrayList<MovimientoDinero> movimiento;
+    private  ArrayList<MovimientoDinero> movimientoDinero;
 
     private Date updatedAt;
     private Date createdAt;
     //Constructor
     public Empleado(){};
-    public Empleado(long id, String nombreEmpleado, String correoEmpleado, Empresa empresa, Enum_RoleName rolEmpleado,
-                    Profile profile, ArrayList<MovimientoDinero> movimiento, Date updatedAt, Date createdAt){
+    public Empleado(long id, String nombreEmpleado, String correoEmpleado, Empresa empresa,
+                    Profile profile, ArrayList<MovimientoDinero> movimientoDinero, Date updatedAt, Date createdAt){
 
         this.nombreEmpleado = nombreEmpleado;
         this.correoEmpleado = correoEmpleado;
         this.empresa = empresa;
-        this.rolEmpleado = rolEmpleado;
 
         this.id = id;
         this.profile = profile;
-        this.movimiento = movimiento;
+        this.movimientoDinero = movimientoDinero;
         this.updatedAt = updatedAt;
         this.createdAt = createdAt;
 
@@ -72,13 +66,6 @@ public class Empleado {
         this.empresa = empresa;
     }
 
-    public Enum_RoleName getRolEmpleado() {
-        return rolEmpleado;
-    }
-
-    public void setRolEmpleado(Enum_RoleName rolEmpleado) {
-        this.rolEmpleado = rolEmpleado;
-    }
 
     public long getId(){return id;}
     public void setId(long id){this.id=id;}
@@ -87,11 +74,11 @@ public class Empleado {
     public void setProfile(Profile profile){this.profile=profile;}
 
     public ArrayList<MovimientoDinero> getMovimiento() {
-        return movimiento;
+        return movimientoDinero;
     }
 
     public void setMovimiento(ArrayList<MovimientoDinero> movimiento) {
-        this.movimiento = movimiento;
+        this.movimientoDinero = movimiento;
     }
 
     public Date getUpdatedAt() {
