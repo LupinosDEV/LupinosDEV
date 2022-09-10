@@ -15,7 +15,6 @@ public class MovimientoDineroServices {
 
     public List<MovimientoDinero> getAllTransactions(){
         List<MovimientoDinero> transactionList = new ArrayList<>();
-        //Encuentra todos los movimientoDinero en la base de datos itera y la agrega a una lista
         movimientoDineroRepository.findAll().forEach(transaction -> transactionList.add(transaction));
         return transactionList;
     }
@@ -27,6 +26,10 @@ public class MovimientoDineroServices {
     }
     public void deleteTransactionById(Long id){
         movimientoDineroRepository.deleteById(id);
+    }
+
+    public ArrayList<MovimientoDinero> getAllTransactionsEnterprise(Long id){
+        return movimientoDineroRepository.findByEnterprise(id);
     }
 
 }
