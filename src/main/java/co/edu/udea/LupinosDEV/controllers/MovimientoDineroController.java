@@ -4,28 +4,34 @@ import co.edu.udea.LupinosDEV.entities.MovimientoDinero;
 import co.edu.udea.LupinosDEV.services.MovimientoDineroServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@RestController
+@Controller
 public class MovimientoDineroController {
     @Autowired
     MovimientoDineroServices movimientoDineroServices;
 
-
     @GetMapping("/movements")
-    public List<MovimientoDinero> getAllTransactions(){
-        return movimientoDineroServices.getAllTransactions();
+    public String getAllTransactions(Model model){
+        List<MovimientoDinero> transactionList = movimientoDineroServices.getAllTransactions();
+        model.addAttribute("transactionsList",transactionList);
+        return "listAllTransactions";
     }
     @GetMapping("/movements/{id}")
-    public MovimientoDinero getTransactionById(@PathVariable("id") Long id){
-        return movimientoDineroServices.getTransactionById(id);
+    public String getTransactionById(Model model, @PathVariable Long id){
+        MovimientoDinero transactionById = movimientoDineroServices.getTransactionById(id);
+        model.addAttribute("transactionById",transactionById);
+        return "transactionById";
     }
     @GetMapping("/enterprises/{id}/movements")
-    public ArrayList<MovimientoDinero> getTransactionsByEnterprise(@PathVariable("id") Long id){
-        return movimientoDineroServices.getAllTransactionsEnterprise(id);
+    public String transactionsByEnterprise(@PathVariable("id")Long id, Model model){
+        List<MovimientoDinero> transactionList = movimientoDineroServices.getAllTransactionsEnterprise(id);
+        model.addAttribute("transactionsList",transactionList);
+        return "transactionListByEnterprise";
     }
 
     @PostMapping("/enterprises/{id}/movements")
