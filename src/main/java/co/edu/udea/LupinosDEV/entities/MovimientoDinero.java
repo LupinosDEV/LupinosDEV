@@ -1,5 +1,7 @@
 package co.edu.udea.LupinosDEV.entities;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -20,9 +22,9 @@ public class MovimientoDinero {
     @ManyToOne
     @JoinColumn(name = "empresa_id")
     private Empresa empresa;
-    @Column(name = "createAt")
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private Date createAt;
-    @Column(name = "uptadeAt")
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private Date uptadeAt;
     //Constructor
     public MovimientoDinero(){}

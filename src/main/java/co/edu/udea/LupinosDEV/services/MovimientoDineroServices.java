@@ -21,8 +21,12 @@ public class MovimientoDineroServices {
     public MovimientoDinero getTransactionById(Long id){
         return movimientoDineroRepository.findById(id).get();
     }
-    public MovimientoDinero createOrEditTransaction(MovimientoDinero transaction){
-        return movimientoDineroRepository.save(transaction);
+    public boolean createOrEditTransaction(MovimientoDinero transaction){
+        MovimientoDinero movement = movimientoDineroRepository.save(transaction);
+        if (movimientoDineroRepository.findById(movement.getId())!=null){
+            return true;
+        }
+        return false;
     }
     public void deleteTransactionById(Long id){
         movimientoDineroRepository.deleteById(id);
