@@ -3,6 +3,7 @@ package co.edu.udea.LupinosDEV.controllers;
 import co.edu.udea.LupinosDEV.entities.Empleado;
 import co.edu.udea.LupinosDEV.entities.MovimientoDinero;
 import co.edu.udea.LupinosDEV.services.MovimientoDineroServices;
+import co.edu.udea.LupinosDEV.services.UsuariosService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +17,8 @@ import java.util.List;
 public class MovimientoDineroController {
     @Autowired
     MovimientoDineroServices movimientoDineroServices;
+    @Autowired
+    UsuariosService usuariosService;
 
     //listá todos los movimientos
     @GetMapping("/movements")
@@ -44,8 +47,8 @@ public class MovimientoDineroController {
         MovimientoDinero transaction= new MovimientoDinero();
         model.addAttribute("newTransaction",transaction);
         model.addAttribute("alert",alert);
-        //List<Empleado> employeeList= empleadoservice.getAllEmpleado();
-        //model.addAttribute("employeeslist",employeeList);
+        List<Empleado> employeeList= usuariosService.getAllUsers();
+        model.addAttribute("employeeslist",employeeList);
         return "newTransactions";
     }
     @PostMapping("/saveTransaction")
