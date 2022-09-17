@@ -5,6 +5,8 @@ import co.edu.udea.LupinosDEV.entities.MovimientoDinero;
 import co.edu.udea.LupinosDEV.services.MovimientoDineroServices;
 import co.edu.udea.LupinosDEV.services.UsuariosService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -19,6 +21,11 @@ public class MovimientoDineroController {
     MovimientoDineroServices movimientoDineroServices;
     @Autowired
     UsuariosService usuariosService;
+
+    @GetMapping("/")
+    public String home(Model model, @AuthenticationPrincipal OidcUser principal) {
+        return "index";
+    }
 
     //listá todos los movimientos
     @GetMapping("/movements")

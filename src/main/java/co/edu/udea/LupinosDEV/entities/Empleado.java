@@ -7,7 +7,6 @@ import java.util.Date;
 @Entity
 @Table(name = "Empleado")
 public class Empleado {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
@@ -21,7 +20,6 @@ public class Empleado {
     @JoinColumn(name="empresa_id")
     private Empresa empresa;
     private  ArrayList<MovimientoDinero> movimientoDinero;
-
     private Date updatedAt;
     private Date createdAt;
     //Constructor
@@ -65,8 +63,6 @@ public class Empleado {
     public void setEmpresa(Empresa empresa) {
         this.empresa = empresa;
     }
-
-
     public long getId(){return id;}
     public void setId(long id){this.id=id;}
 
