@@ -55,7 +55,11 @@
                 </select>
             </div>
         </div>
-
+        <!--FECHA DE CREACION-->
+        <div class="col-md-6">
+            <label for="createAt">Create At</label>
+            <input class="form-control" type="datetime-local" th:field="*{createAt}" id="createAt" required="required" readonly>
+        </div>
         <!--FECHA DE ACTUALIZACION-->
         <div class="col-md-6">
             <label for="uptadeAt">UpDateAt At</label>

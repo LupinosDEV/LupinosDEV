@@ -73,7 +73,7 @@
       <p th:text="${#numbers.formatCurrency(sumAllMovements)}" class="form-control" id="sumAllMovements"></p>
     </div>
     <!-- CAMPO PARA EL AREA DE NAVEGACION -->
-    <nav aria-label="Ejemplo navegacion">
+    <nav>
       <ul class="pagination mt-4">
         <li th:class="${actualPage==state.index} ? 'active' : '' " th:each="page, state: ${allPages}" class="page-item">
           <a th:href="@{/movements/(page=${state.index})}" class="page-link" th:text="${state.index}+1"></a>
