@@ -27,8 +27,9 @@
         <td th:text="${transaction.id}"></td>
         <td th:text="${transaction.conceptoMovimiento}"></td>
         <td th:text="${transaction.montoMovimiento}"></td>
-        <td th:text="${transaction.Empleado.nombreEmpleado}"></td>
-        <td th:text="${transaction.empresa.nombre}"></td>
+        <td th:text="${transaction.empleado.nombreEmpleado}"></td>
+        <!-- <td th:text="${transaction.empresa.nombre}"></td> -->
+        <td>nombreDeLaEmpresa</td>
         <td th:text="${transaction.createAt}"></td>
         <td th:text="${transaction.uptadeAt}"></td>
         <td><button type="button" class="btn btn-warning"><a>Edit</a></button></td>

@@ -9,6 +9,11 @@ import java.util.ArrayList;
 
 @Repository
 public interface MovimientoDineroRepository extends JpaRepository<MovimientoDinero,Long>{
-    @Query(value="select * from movimiento_dinero where empleado_id in (select id from Empleado where empresa_id= ?1)", nativeQuery = true)
+    //Traer todos los movimientos de una empresa por su id
+    @Query(value="select * from movimiento_dinero where empresa_id=1", nativeQuery = true)
     public abstract ArrayList<MovimientoDinero> findByEnterprise(Long id);
+
+    //Metodo para ver la suma de TODOS LOS MOVIMIENTOS
+    @Query(value="SELECT SUM(monto_movimiento) from movimiento_dinero", nativeQuery = true)
+    public abstract Long sumMovements();
 }

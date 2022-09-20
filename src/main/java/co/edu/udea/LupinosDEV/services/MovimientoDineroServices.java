@@ -36,4 +36,8 @@ public class MovimientoDineroServices {
         return movimientoDineroRepository.findByEnterprise(id);
     }
 
+    public Long sumAllMovements(){
+        return movimientoDineroRepository.sumMovements();
+    }
+
 }

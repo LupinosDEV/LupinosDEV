@@ -19,6 +19,8 @@
 <div sec:authorize="!isAuthenticated()">
   <a th:href="@{/oauth2/authorization/auth0}">Log In</a>
 </div>
+
+
 <div sec:authorize="isAuthenticated()">
   <a th:href="@{/movements}">ver movimientos empresa</a>
 </div>

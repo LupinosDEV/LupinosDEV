@@ -2,9 +2,12 @@ package co.edu.udea.LupinosDEV.controllers;
 
 import co.edu.udea.LupinosDEV.entities.Empleado;
 import co.edu.udea.LupinosDEV.entities.MovimientoDinero;
+import co.edu.udea.LupinosDEV.repositories.MovimientoDineroRepository;
 import co.edu.udea.LupinosDEV.services.MovimientoDineroServices;
 import co.edu.udea.LupinosDEV.services.UsuariosService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.stereotype.Controller;
@@ -21,6 +24,8 @@ public class MovimientoDineroController {
     MovimientoDineroServices movimientoDineroServices;
     @Autowired
     UsuariosService usuariosService;
+    @Autowired
+    MovimientoDineroRepository movimientoDineroRepository;
 
     @GetMapping("/")
     public String home(Model model, @AuthenticationPrincipal OidcUser principal) {
@@ -29,9 +34,19 @@ public class MovimientoDineroController {
 
     //listá todos los movimientos
     @GetMapping("/movements")
-    public String getAllTransactions(Model model){
-        List<MovimientoDinero> transactionList = movimientoDineroServices.getAllTransactions();
-        model.addAttribute("transactionsList",transactionList);
+    public String getAllTransactions(@RequestParam(value="page", required=false, defaultValue = "1") int pageNumber,
+                                     @RequestParam(value="size", required=false, defaultValue = "7") int size,
+                                     Model model,
+                                     @ModelAttribute("alert") String alert){
+
+        Page<MovimientoDinero> paginaMovimientos= movimientoDineroRepository.findAll(PageRequest.of(pageNumber,size));
+
+        model.addAttribute("ListMovements",paginaMovimientos.getContent());
+        model.addAttribute("allPages",new int[paginaMovimientos.getTotalPages()]);
+        model.addAttribute("actualPage", pageNumber);
+        model.addAttribute("alert",alert);
+        Long sumMovements=movimientoDineroServices.sumAllMovements();
+        model.addAttribute("sumAllMovements",sumMovements);
         return "listAllTransactions";
     }
     //listá los movimientos por id
@@ -49,7 +64,7 @@ public class MovimientoDineroController {
         return "transactionListByEnterprise";
     }
     //añade una transacción
-    @GetMapping ("/updateEnterprise")
+    @GetMapping ("/addTransaction")
     public String addTransaction(Model model,@ModelAttribute("alert") String alert){
         MovimientoDinero transaction= new MovimientoDinero();
         model.addAttribute("newTransaction",transaction);
@@ -67,4 +82,6 @@ public class MovimientoDineroController {
         redirectAttributes.addFlashAttribute("alert","saveError");
         return "redirect:/addTransaction";
     }
+    //edita un movimiento
+    //eliminar un movimiento
 }

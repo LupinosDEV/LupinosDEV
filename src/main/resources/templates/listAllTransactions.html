@@ -53,7 +53,7 @@
         <th>Edit</th>
         <th>Delete</th>
       </tr>
-      <tr th:each="transaction : ${transactionsList}">
+      <tr th:each="transaction : ${ListMovements}">
         <td th:text="${transaction.id}"></td>
         <td th:text="${transaction.conceptoMovimiento}"></td>
         <td th:text="${transaction.montoMovimiento}"></td>
@@ -67,6 +67,21 @@
       </tr>
 
     </table>
+    <!-- Campo para ver la suma de TODOS LOS MOVIMIENTOS FILTRADOS -->
+    <div class="col-md-3 right">
+      <label for="sumAllMovements">Total Movimientos:</label>
+      <p th:text="${#numbers.formatCurrency(sumAllMovements)}" class="form-control" id="sumAllMovements"></p>
+    </div>
+    <!-- CAMPO PARA EL AREA DE NAVEGACION -->
+    <nav aria-label="Ejemplo navegacion">
+      <ul class="pagination mt-4">
+        <li th:class="${actualPage==state.index} ? 'active' : '' " th:each="page, state: ${allPages}" class="page-item">
+          <a th:href="@{/movements/(page=${state.index})}" class="page-link" th:text="${state.index}+1"></a>
+        </li>
+      </ul>
+    </nav>
+
+
   </div>
 </div>
 <script th:inline="javascript">
@@ -79,6 +94,12 @@
         }
         var msg= [[${alert}]];
 
+        if (msg == "saveOK"){
+            Command : toastr["success"]("Save success!")
+            }
+        else if (msg == "saveError"){
+            Command : toastr["error"]("Save ¡Error!")
+        }
         if (msg == "updateOK"){
             Command : toastr["success"]("Update success!")
             }

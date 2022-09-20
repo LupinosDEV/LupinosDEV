@@ -45,7 +45,7 @@ EmpresaServices empresaServices;
     }
 
     //crear empresa
-    @PostMapping("/saveTransaction")
+    @PostMapping("/saveEnterprise")
     public String saveEnterprise(Empresa enterprise, RedirectAttributes redirectAttributes){
         if(empresaServices.createOrEditEnterprise(enterprise)){
             redirectAttributes.addFlashAttribute("alert","saveOK");
