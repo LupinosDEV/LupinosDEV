@@ -49,7 +49,7 @@ public class MovimientoDineroController {
         return "transactionListByEnterprise";
     }
     //añade una transacción
-    @GetMapping ("/addTransaction")
+    @GetMapping ("/updateEnterprise")
     public String addTransaction(Model model,@ModelAttribute("alert") String alert){
         MovimientoDinero transaction= new MovimientoDinero();
         model.addAttribute("newTransaction",transaction);

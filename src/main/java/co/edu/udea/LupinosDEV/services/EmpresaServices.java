@@ -14,12 +14,12 @@ public class EmpresaServices {
 
     //Se crea lista de empresas
     public List<Empresa> getAllEnterprises(){
-        List<Empresa> enterpricesList = new ArrayList<>();
-        empresaRepository.findAll().forEach(empresa -> enterpricesList.add(empresa));
-        return enterpricesList;
+        List<Empresa> enterprisesList = new ArrayList<>();
+        empresaRepository.findAll().forEach(empresa -> enterprisesList.add(empresa));
+        return enterprisesList;
     }
     //Trae una empresa
-    public Empresa getEmpresaById(Long id){
+    public Empresa getEnterpriseById(Long id){
         return empresaRepository.findById(id).get();
     }
 
@@ -32,8 +32,9 @@ public class EmpresaServices {
         return false;
     }
     //Eliminar empresa
-    public void deleteEnterpriseById(Long id){
+    public Empresa deleteEnterpriseById(Long id){
         empresaRepository.deleteById(id);
+        return null;
     }
 
 }
