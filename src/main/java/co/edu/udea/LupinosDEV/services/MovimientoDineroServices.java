@@ -28,8 +28,12 @@ public class MovimientoDineroServices {
         }
         return false;
     }
-    public void deleteTransactionById(Long id){
+    public boolean deleteTransactionById(Long id){
         movimientoDineroRepository.deleteById(id);
+        if(movimientoDineroRepository.findById(id).isPresent()){
+            return false;
+        }
+        return true;
     }
 
     public ArrayList<MovimientoDinero> getAllTransactionsEnterprise(Long id){

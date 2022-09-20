@@ -62,8 +62,8 @@
         <td>nombreDeLaEmpresa</td>
         <td th:text="${transaction.createAt}"></td>
         <td th:text="${transaction.uptadeAt}"></td>
-        <td><button type="button" class="btn btn-warning"><a>Edit</a></button></td>
-        <td><button type="button" class="btn btn-danger"><a>Delete</a></button></td>
+        <td><button type="button" class="btn btn-warning"><a th:href="@{/EditMovement/{id}(id=${transaction.id})}">Edit</a></button></td>
+        <td><button type="button" class="btn btn-danger"><a th:href="@{/DeleteMovement/{id}(id=${transaction.id})}">Delete</a></button></td>
       </tr>
 
     </table>

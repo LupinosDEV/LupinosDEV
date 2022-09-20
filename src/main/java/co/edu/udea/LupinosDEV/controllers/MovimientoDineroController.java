@@ -83,5 +83,35 @@ public class MovimientoDineroController {
         return "redirect:/addTransaction";
     }
     //edita un movimiento
+    @GetMapping("/EditMovement/{id}")
+    public String editMovement(Model model, @PathVariable Long id, @ModelAttribute("alert") String alert){
+        MovimientoDinero movement=movimientoDineroServices.getTransactionById(id);
+        model.addAttribute("movementToEdit",movement);
+        model.addAttribute("alert", alert);
+        List<Empleado> listEmployees= usuariosService.getAllUsers();
+        model.addAttribute("ListOfEmployees",listEmployees);
+        return "editMovement";
+    }
+
+    @PostMapping("/UpdateMovement")
+    public String updateMovement(@ModelAttribute("movement") MovimientoDinero movement, RedirectAttributes redirectAttributes){
+        if(movimientoDineroServices.createOrEditTransaction(movement)){
+            redirectAttributes.addFlashAttribute("alert","updateOK");
+            return "redirect:/movements";
+        }
+        redirectAttributes.addFlashAttribute("alert","updateError");
+        return "redirect:/EditMovement/"+movement.getId();
+
+    }
+
     //eliminar un movimiento
+    @GetMapping("/DeleteMovement/{id}")
+    public String deleteMovement(@PathVariable Long id, RedirectAttributes redirectAttributes){
+        if (movimientoDineroServices.deleteTransactionById(id)){
+            redirectAttributes.addFlashAttribute("alert","deleteOK");
+            return "redirect:/movements";
+        }
+        redirectAttributes.addFlashAttribute("alert", "deleteError");
+        return "redirect:/movements";
+    }
 }
