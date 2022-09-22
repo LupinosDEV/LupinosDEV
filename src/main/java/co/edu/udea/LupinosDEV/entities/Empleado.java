@@ -24,14 +24,12 @@ public class Empleado {
     private Date createdAt;
     //Constructor
     public Empleado(){};
-    public Empleado(long id, String nombreEmpleado, String correoEmpleado, Empresa empresa,
+    public Empleado(String nombreEmpleado, String correoEmpleado, Empresa empresa,
                     Profile profile, ArrayList<MovimientoDinero> movimientoDinero, Date updatedAt, Date createdAt){
 
         this.nombreEmpleado = nombreEmpleado;
         this.correoEmpleado = correoEmpleado;
         this.empresa = empresa;
-
-        this.id = id;
         this.profile = profile;
         this.movimientoDinero = movimientoDinero;
         this.updatedAt = updatedAt;

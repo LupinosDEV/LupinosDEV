@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -35,15 +35,13 @@
                 <td th:text="${enterprise.telefonoEmpresa}"></td>
                 <td th:text="${enterprise.NIT}"></td>
                 <td th:text="${enterprise.direccionEmpresa}"></td>
-                <!-- <td th:text="${transaction.empresa.nombre}"></td> -->
                 <td th:text="${enterprise.createAt}"></td>
                 <td th:text="${enterprise.uptadeAt}"></td>
-                <td><button type="button" class="btn btn-warning"><a th:href="@{/editEnterprises/{idEmpresa}(id=${enterprise.id})}">Edit</a></button></td>
-                <td><button type="button" class="btn btn-danger"><a th:href="@{/deleteEnterprises/{idEmpresa}(id=${enterprise.id})}">Delete</a></button></td>
+                <td><button type="button" class="btn btn-warning"><a th:href="@{/editEnterprises/{idEmpresa}(id=${enterprise.idEmpresa})}">Edit</a></button></td>
+                <td><button type="button" class="btn btn-danger"><a th:href="@{/deleteEnterprises/{idEmpresa}(id=${enterprise.idEmpresa})}">Delete</a></button></td>
             </tr>
 
         </table>
-        <!-- Campo para ver la suma de TODOS LOS MOVIMIENTOS FILTRADOS -->
         <!-- CAMPO PARA EL AREA DE NAVEGACION -->
         <nav>
             <ul class="pagination mt-4">
