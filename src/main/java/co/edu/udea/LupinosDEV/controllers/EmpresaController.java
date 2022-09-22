@@ -16,49 +16,54 @@ import java.util.List;
 @Controller
 public class EmpresaController {
 
-@Autowired
-EmpresaServices empresaServices;
+    @Autowired
+    EmpresaServices empresaServices;
 
     //listá todos los empresas
     @GetMapping("/enterprises")
-    public String getAllEnterprises(Model model){
+    public String getAllEnterprises(Model model) {
         List<Empresa> enterprisesList = empresaServices.getAllEnterprises();
-        model.addAttribute("transactionsList",enterprisesList);
+        model.addAttribute("enterprisesList", enterprisesList);
         return "listAllEnterprises";
     }
 
-    //listá los empresa por id
+    //listá las empresas por id
     @GetMapping("/enterprises/{id}")
-    public String getEnterpriseById(Model model, @PathVariable Long id){
+    public String getEnterpriseById(Model model, @PathVariable Long id) {
         Empresa enterpriseById = empresaServices.getEnterpriseById(id);
-        model.addAttribute("empresaById",enterpriseById);
+        model.addAttribute("enterpriseById", enterpriseById);
         return "enterpriseById";
     }
 
     //Modifica empresa
-    @PatchMapping ("/addEnterprise")
-    public String addEnterprise(Model model,@ModelAttribute("alert") String alert){
-        Empresa enterprise= new Empresa();
-        model.addAttribute("newEnterprise",enterprise);
-        model.addAttribute("alert",alert);
+    @PatchMapping("/addEnterprise")
+    public String addEnterprise(Model model, @ModelAttribute("alert") String alert) {
+        Empresa enterprise = new Empresa();
+        model.addAttribute("newEnterprise", enterprise);
+        model.addAttribute("alert", alert);
         return "newEnterprise";
     }
 
     //crear empresa
     @PostMapping("/saveEnterprise")
-    public String saveEnterprise(Empresa enterprise, RedirectAttributes redirectAttributes){
-        if(empresaServices.createOrEditEnterprise(enterprise)){
-            redirectAttributes.addFlashAttribute("alert","saveOK");
-            return "redirect:/enterprises";
+    public String saveEnterprise(Empresa enterprise, RedirectAttributes redirectAttributes) {
+        if (empresaServices.createOrEditEnterprise(enterprise)) {
+            redirectAttributes.addFlashAttribute("alert", "saveOK");
+            return "redirect:/listAllEnterprises";
         }
-        redirectAttributes.addFlashAttribute("alert","saveError");
+        redirectAttributes.addFlashAttribute("alert", "saveError");
         return "redirect:/updateEnterprise";
     }
 
+    //Elimina una empresa
     @DeleteMapping("/deleteEnterprises/[id]")
-    public String deleteEnterprise(Model model, @PathVariable Long id){
-        Empresa enterpriseById = empresaServices.deleteEnterpriseById(id);
-        model.addAttribute("empresaById",enterpriseById);
-        return "deleteEnterpriseById";
+    public String deleteEnterprise(Model model, @PathVariable Long idEmpresa, RedirectAttributes redirectAttributes) {
+        if (empresaServices.deleteEnterpriseById(idEmpresa)){
+            redirectAttributes.addFlashAttribute("alert","deleteOK");
+            return "redirect:/listAllEnterprises";
+        }
+        redirectAttributes.addFlashAttribute("alert", "deleteError");
+        return "redirect:/listAllEnterprises";
     }
+
 }

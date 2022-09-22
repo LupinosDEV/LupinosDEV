@@ -32,9 +32,12 @@ public class EmpresaServices {
         return false;
     }
     //Eliminar empresa
-    public Empresa deleteEnterpriseById(Long id){
+    public boolean deleteEnterpriseById(Long id){
         empresaRepository.deleteById(id);
-        return null;
+        if(empresaRepository.findById(id).isPresent()){
+            return false;
+        }
+        return true;
     }
 
 }

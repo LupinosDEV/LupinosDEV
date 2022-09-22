@@ -11,17 +11,17 @@ import java.util.Date;
 public class Empresa {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, unique = true)
-    private Long id;
-    @Column(name = "nombre", nullable = false, unique = true, length = 50)
-    private String nombre;
-    @Column(name = "telefono", length = 15)
-    private String telefono;
+    @Column(name = "idEmpresa", nullable = false, unique = true)
+    private Long idEmpresa;
+    @Column(name = "nombreEmpresa", nullable = false, unique = true, length = 50)
+    private String nombreEmpresa;
+    @Column(name = "telefonoEmpresa", length = 15)
+    private String telefonoEmpresa;
     @Column(name = "NIT", nullable = false, unique = true, length = 15)
     private String NIT;
 
-    @Column(name = "direccion", nullable = false, length = 50)
-    private String direccion;
+    @Column(name = "direccionEmpresa", nullable = false, length = 50)
+    private String direccionEmpresa;
 
     @OneToMany
     @JoinColumn(name = "usuario_id")
@@ -39,11 +39,11 @@ public class Empresa {
     public Empresa(){}
 
     public Empresa(Long id, String nombre, String direccion, String NIT, String telefono, List<Empleado> usuario, List<MovimientoDinero> movimiento, Date createdAt, Date updatedAt) {
-        this.id = id;
-        this.nombre = nombre;
+        this.idEmpresa = id;
+        this.nombreEmpresa = nombre;
         this.NIT = NIT;
-        this.telefono = telefono;
-        this.direccion = direccion;
+        this.telefonoEmpresa = telefono;
+        this.direccionEmpresa = direccion;
         this.usuario = usuario;
         this.movimiento = movimiento;
         this.createdAt = createdAt;
@@ -51,27 +51,27 @@ public class Empresa {
     }
 
     public Long getId() {
-        return id;
+        return idEmpresa;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.idEmpresa = id;
     }
 
     public String getNombre() {
-        return nombre;
+        return nombreEmpresa;
     }
 
     public void setNombre(String nombre) {
-        this.nombre = nombre;
+        this.nombreEmpresa = nombre;
     }
 
     public String getTelefono() {
-        return telefono;
+        return telefonoEmpresa;
     }
 
     public void setTelefono(String telefono) {
-        this.telefono = telefono;
+        this.telefonoEmpresa = telefono;
     }
 
     public String getNIT() {
@@ -83,11 +83,11 @@ public class Empresa {
     }
 
     public String getDireccion() {
-        return direccion;
+        return direccionEmpresa;
     }
 
     public void setDireccion(String direccion) {
-        this.direccion = direccion;
+        this.direccionEmpresa = direccion;
     }
 
     public List<Empleado> getUsuario() {
