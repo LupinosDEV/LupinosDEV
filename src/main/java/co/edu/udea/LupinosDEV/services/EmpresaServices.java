@@ -26,7 +26,7 @@ public class EmpresaServices {
     //Crear y editar empresa
     public boolean createOrEditEnterprise(Empresa empresa){
         Empresa empresaNueva = empresaRepository.save(empresa);
-        if (empresaRepository.findById(empresaNueva.getId())!=null){
+        if (empresaRepository.findById(empresaNueva.getIdEmpresa())!=null){
             return true;
         }
         return false;

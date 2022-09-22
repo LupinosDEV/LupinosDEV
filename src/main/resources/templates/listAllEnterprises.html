@@ -15,7 +15,7 @@
 <div class="container">
     <br>
     <h1 class="title">Enterprises</h1>
-    <button type="button" class="btn btn-success right"><a th:href="@{/newEnterprise}">New Enterprise</a></button>
+    <button type="button" class="btn btn-success right"><a th:href="@{/addEnterprise}">New Enterprise</a></button>
     <div class="table-responsive">
         <table class="table table-bordered table-hover table-condensed">
             <tr>
@@ -35,8 +35,8 @@
                 <td th:text="${enterprise.telefonoEmpresa}"></td>
                 <td th:text="${enterprise.NIT}"></td>
                 <td th:text="${enterprise.direccionEmpresa}"></td>
-                <td th:text="${enterprise.createAt}"></td>
-                <td th:text="${enterprise.uptadeAt}"></td>
+                <td th:text="${enterprise.createdAt}"></td>
+                <td th:text="${enterprise.updatedAt}"></td>
                 <td><button type="button" class="btn btn-warning"><a th:href="@{/editEnterprises/{idEmpresa}(id=${enterprise.idEmpresa})}">Edit</a></button></td>
                 <td><button type="button" class="btn btn-danger"><a th:href="@{/deleteEnterprises/{idEmpresa}(id=${enterprise.idEmpresa})}">Delete</a></button></td>
             </tr>

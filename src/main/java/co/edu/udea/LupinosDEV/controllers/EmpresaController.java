@@ -35,8 +35,8 @@ public class EmpresaController {
         return "enterpriseById";
     }
 
-    //Modifica empresa
-    @PatchMapping("/addEnterprise")
+    //añade una empresa
+    @GetMapping("/addEnterprise")
     public String addEnterprise(Model model, @ModelAttribute("alert") String alert) {
         Empresa enterprise = new Empresa();
         model.addAttribute("newEnterprise", enterprise);
@@ -44,15 +44,14 @@ public class EmpresaController {
         return "newEnterprise";
     }
 
-    //crear empresa
     @PostMapping("/saveEnterprise")
     public String saveEnterprise(Empresa enterprise, RedirectAttributes redirectAttributes) {
         if (empresaServices.createOrEditEnterprise(enterprise)) {
             redirectAttributes.addFlashAttribute("alert", "saveOK");
-            return "redirect:/listAllEnterprises";
+            return "redirect:/enterprises";
         }
         redirectAttributes.addFlashAttribute("alert", "saveError");
-        return "redirect:/updateEnterprise";
+        return "redirect:/addEnterprise";
     }
 
     //Elimina una empresa

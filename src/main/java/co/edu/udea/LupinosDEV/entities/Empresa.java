@@ -1,6 +1,8 @@
 package co.edu.udea.LupinosDEV.entities;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,48 +32,47 @@ public class Empresa {
     @JoinColumn(name = "usuario_id")
     private List<MovimientoDinero> movimiento = new ArrayList<>();
 
-    @Column(name = "createdAt")
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private Date createdAt;
 
-    @Column(name = "updatedAt")
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private Date updatedAt;
 
     public Empresa(){}
 
-    public Empresa(Long id, String nombre, String direccion, String NIT, String telefono, List<Empleado> usuario, List<MovimientoDinero> movimiento, Date createdAt, Date updatedAt) {
-        this.idEmpresa = id;
-        this.nombreEmpresa = nombre;
+    public Empresa(String nombreEmpresa, String telefonoEmpresa, String NIT, String direccionEmpresa, List<Empleado> usuario, List<MovimientoDinero> movimiento, Date createdAt, Date updatedAt) {
+        this.nombreEmpresa = nombreEmpresa;
+        this.telefonoEmpresa = telefonoEmpresa;
         this.NIT = NIT;
-        this.telefonoEmpresa = telefono;
-        this.direccionEmpresa = direccion;
+        this.direccionEmpresa = direccionEmpresa;
         this.usuario = usuario;
         this.movimiento = movimiento;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
 
-    public Long getId() {
+    public Long getIdEmpresa() {
         return idEmpresa;
     }
 
-    public void setId(Long id) {
-        this.idEmpresa = id;
+    public void setIdEmpresa(Long idEmpresa) {
+        this.idEmpresa = idEmpresa;
     }
 
-    public String getNombre() {
+    public String getNombreEmpresa() {
         return nombreEmpresa;
     }
 
-    public void setNombre(String nombre) {
-        this.nombreEmpresa = nombre;
+    public void setNombreEmpresa(String nombreEmpresa) {
+        this.nombreEmpresa = nombreEmpresa;
     }
 
-    public String getTelefono() {
+    public String getTelefonoEmpresa() {
         return telefonoEmpresa;
     }
 
-    public void setTelefono(String telefono) {
-        this.telefonoEmpresa = telefono;
+    public void setTelefonoEmpresa(String telefonoEmpresa) {
+        this.telefonoEmpresa = telefonoEmpresa;
     }
 
     public String getNIT() {
@@ -82,12 +83,12 @@ public class Empresa {
         this.NIT = NIT;
     }
 
-    public String getDireccion() {
+    public String getDireccionEmpresa() {
         return direccionEmpresa;
     }
 
-    public void setDireccion(String direccion) {
-        this.direccionEmpresa = direccion;
+    public void setDireccionEmpresa(String direccionEmpresa) {
+        this.direccionEmpresa = direccionEmpresa;
     }
 
     public List<Empleado> getUsuario() {
