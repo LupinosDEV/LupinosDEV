@@ -10,6 +10,9 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
   <style>
+    .mt{
+      margin-top:2.5rem;
+    }
     body{
     background-color: #EAE7E7;
     }
@@ -38,7 +41,7 @@
 <body>
 <div class="container">
   <br>
-  <h1 class="title">Todos los movimientos de dinero</h1>
+  <h1 class="title">All transactions</h1>
   <button type="button" class="btn btn-success right"><a th:href="@{/addTransaction}">New Transaction</a></button>
   <div class="table-responsive">
     <table class="table table-bordered table-hover table-condensed">
@@ -69,12 +72,12 @@
     </table>
     <!-- Campo para ver la suma de TODOS LOS MOVIMIENTOS FILTRADOS -->
     <div class="col-md-3 right">
-      <label for="sumAllMovements">Total Movimientos:</label>
+      <label for="sumAllMovements">Total:</label>
       <p th:text="${#numbers.formatCurrency(sumAllMovements)}" class="form-control" id="sumAllMovements"></p>
     </div>
     <!-- CAMPO PARA EL AREA DE NAVEGACION -->
     <nav>
-      <ul class="pagination mt-4">
+      <ul class="pagination mt">
         <li th:class="${actualPage==state.index} ? 'active' : '' " th:each="page, state: ${allPages}" class="page-item">
           <a th:href="@{/movements/(page=${state.index})}" class="page-link" th:text="${state.index}+1"></a>
         </li>
