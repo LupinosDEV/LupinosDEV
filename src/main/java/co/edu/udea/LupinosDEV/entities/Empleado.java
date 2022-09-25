@@ -1,5 +1,7 @@
 package co.edu.udea.LupinosDEV.entities;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
@@ -20,22 +22,37 @@ public class Empleado {
     @JoinColumn(name="empresa_id")
     private Empresa empresa;
     private  ArrayList<MovimientoDinero> movimientoDinero;
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private Date updatedAt;
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private Date createdAt;
+    private String rol;
+    private String password;
+    private Boolean condition;
     //Constructor
     public Empleado(){};
-    public Empleado(String nombreEmpleado, String correoEmpleado, Empresa empresa,
-                    Profile profile, ArrayList<MovimientoDinero> movimientoDinero, Date updatedAt, Date createdAt){
 
+    public Empleado(String nombreEmpleado, String correoEmpleado, Profile profile, Empresa empresa, ArrayList<MovimientoDinero> movimientoDinero, Date updatedAt, Date createdAt, String rol, String password, Boolean condition) {
         this.nombreEmpleado = nombreEmpleado;
         this.correoEmpleado = correoEmpleado;
-        this.empresa = empresa;
         this.profile = profile;
+        this.empresa = empresa;
         this.movimientoDinero = movimientoDinero;
         this.updatedAt = updatedAt;
         this.createdAt = createdAt;
+        this.rol = rol;
+        this.password = password;
+        this.condition = condition;
+    }
 
+    //getters y setters
 
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getNombreEmpleado() {
@@ -54,6 +71,14 @@ public class Empleado {
         this.correoEmpleado = correoEmpleado;
     }
 
+    public Profile getProfile() {
+        return profile;
+    }
+
+    public void setProfile(Profile profile) {
+        this.profile = profile;
+    }
+
     public Empresa getEmpresa() {
         return empresa;
     }
@@ -61,18 +86,13 @@ public class Empleado {
     public void setEmpresa(Empresa empresa) {
         this.empresa = empresa;
     }
-    public long getId(){return id;}
-    public void setId(long id){this.id=id;}
 
-    public Profile getProfile(){return profile;}
-    public void setProfile(Profile profile){this.profile=profile;}
-
-    public ArrayList<MovimientoDinero> getMovimiento() {
+    public ArrayList<MovimientoDinero> getMovimientoDinero() {
         return movimientoDinero;
     }
 
-    public void setMovimiento(ArrayList<MovimientoDinero> movimiento) {
-        this.movimientoDinero = movimiento;
+    public void setMovimientoDinero(ArrayList<MovimientoDinero> movimientoDinero) {
+        this.movimientoDinero = movimientoDinero;
     }
 
     public Date getUpdatedAt() {
@@ -86,7 +106,32 @@ public class Empleado {
     public Date getCreatedAt() {
         return createdAt;
     }
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;}
 
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public String getRol() {
+        return rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Boolean getCondition() {
+        return condition;
+    }
+
+    public void setCondition(Boolean condition) {
+        this.condition = condition;
+    }
 }
