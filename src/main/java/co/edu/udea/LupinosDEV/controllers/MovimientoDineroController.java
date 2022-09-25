@@ -77,7 +77,7 @@ public class MovimientoDineroController {
     public String saveTransaction(MovimientoDinero transaction, RedirectAttributes redirectAttributes){
         if(movimientoDineroServices.createOrEditTransaction(transaction)){
             redirectAttributes.addFlashAttribute("alert","saveOK");
-            return "redirect:/movements";
+            return "redirect:/movements/?page=0";
         }
         redirectAttributes.addFlashAttribute("alert","saveError");
         return "redirect:/addTransaction";
@@ -97,7 +97,7 @@ public class MovimientoDineroController {
     public String updateMovement(@ModelAttribute("movement") MovimientoDinero movement, RedirectAttributes redirectAttributes){
         if(movimientoDineroServices.createOrEditTransaction(movement)){
             redirectAttributes.addFlashAttribute("alert","updateOK");
-            return "redirect:/movements";
+            return "redirect:/movements/?page=0";
         }
         redirectAttributes.addFlashAttribute("alert","updateError");
         return "redirect:/EditMovement/"+movement.getId();
@@ -109,9 +109,9 @@ public class MovimientoDineroController {
     public String deleteMovement(@PathVariable Long id, RedirectAttributes redirectAttributes){
         if (movimientoDineroServices.deleteTransactionById(id)){
             redirectAttributes.addFlashAttribute("alert","deleteOK");
-            return "redirect:/movements";
+            return "redirect:/movements/?page=0";
         }
         redirectAttributes.addFlashAttribute("alert", "deleteError");
-        return "redirect:/movements";
+        return "redirect:/movements/?page=0";
     }
 }
