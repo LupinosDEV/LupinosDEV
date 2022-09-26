@@ -24,6 +24,11 @@ public class UsuariosController {
     @Autowired
     EmpresaServices empresaServices;
     //muestra todos los empleados
+
+    @GetMapping ("/principal")
+    public String index(){
+        return "principal";
+    }
     @GetMapping ("/users")
     public String viewEmpleados(Model model, @ModelAttribute("alert") String alert){
         List<Empleado> listaEmpleados=usuariosService.getAllUsers();

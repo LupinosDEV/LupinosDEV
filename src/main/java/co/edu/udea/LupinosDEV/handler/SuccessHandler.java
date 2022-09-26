@@ -40,7 +40,7 @@ public class SuccessHandler extends SimpleUrlAuthenticationSuccessHandler{
         }
 
         if (admin(roles)) {
-            url = "/index";
+            url = "/principal";
         } else if (user(roles)) {
             url = "/movements/?page=0";
         } else {
