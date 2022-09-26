@@ -31,7 +31,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/EditMovement/**","/DeleteMovement/**","/EditEmployee/**","/addEmployee","/addEnterprise").hasRole("ADMIN")
+                .antMatchers("/EditMovement/**","/DeleteMovement/**","/EditEmployee/**","/addEnterprise").hasRole("ADMIN")
 
                 .and().formLogin().successHandler(successHandler)
                 .and().exceptionHandling().accessDeniedPage("/Denied")
