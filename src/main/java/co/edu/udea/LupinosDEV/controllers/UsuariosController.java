@@ -25,9 +25,9 @@ public class UsuariosController {
     EmpresaServices empresaServices;
     //muestra todos los empleados
 
-    @GetMapping ("/principal")
+    @GetMapping ("/")
     public String index(){
-        return "principal";
+        return "index";
     }
     @GetMapping ("/users")
     public String viewEmpleados(Model model, @ModelAttribute("alert") String alert){
