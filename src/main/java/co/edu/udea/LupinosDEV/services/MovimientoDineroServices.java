@@ -21,15 +21,30 @@ public class MovimientoDineroServices {
     public MovimientoDinero getTransactionById(Long id){
         return movimientoDineroRepository.findById(id).get();
     }
-    public MovimientoDinero createOrEditTransaction(MovimientoDinero transaction){
-        return movimientoDineroRepository.save(transaction);
+    public boolean createOrEditTransaction(MovimientoDinero transaction){
+        MovimientoDinero movement = movimientoDineroRepository.save(transaction);
+        if (movimientoDineroRepository.findById(movement.getId())!=null){
+            return true;
+        }
+        return false;
     }
-    public void deleteTransactionById(Long id){
+    public boolean deleteTransactionById(Long id){
         movimientoDineroRepository.deleteById(id);
+        if(movimientoDineroRepository.findById(id).isPresent()){
+            return false;
+        }
+        return true;
     }
 
     public ArrayList<MovimientoDinero> getAllTransactionsEnterprise(Long id){
         return movimientoDineroRepository.findByEnterprise(id);
+    }
+
+    public Long sumAllMovements(){
+        return movimientoDineroRepository.sumMovements();
+    }
+    public Long IdEmail(String email){
+        return movimientoDineroRepository.IdEmail(email);
     }
 
 }

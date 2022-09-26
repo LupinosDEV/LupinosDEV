@@ -1,6 +1,8 @@
 package co.edu.udea.LupinosDEV.entities;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,17 +13,17 @@ import java.util.Date;
 public class Empresa {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, unique = true)
-    private Long id;
-    @Column(name = "nombre", nullable = false, unique = true, length = 50)
-    private String nombre;
-    @Column(name = "telefono", length = 15)
-    private String telefono;
+    @Column(name = "idEmpresa", nullable = false, unique = true)
+    private Long idEmpresa;
+    @Column(name = "nombreEmpresa", nullable = false, unique = true, length = 50)
+    private String nombreEmpresa;
+    @Column(name = "telefonoEmpresa", length = 15)
+    private String telefonoEmpresa;
     @Column(name = "NIT", nullable = false, unique = true, length = 15)
     private String NIT;
 
-    @Column(name = "direccion", nullable = false, length = 50)
-    private String direccion;
+    @Column(name = "direccionEmpresa", nullable = false, length = 50)
+    private String direccionEmpresa;
 
     @OneToMany
     @JoinColumn(name = "usuario_id")
@@ -30,48 +32,47 @@ public class Empresa {
     @JoinColumn(name = "usuario_id")
     private List<MovimientoDinero> movimiento = new ArrayList<>();
 
-    @Column(name = "createdAt")
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private Date createdAt;
 
-    @Column(name = "updatedAt")
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private Date updatedAt;
 
     public Empresa(){}
 
-    public Empresa(Long id, String nombre, String direccion, String NIT, String telefono, List<Empleado> usuario, List<MovimientoDinero> movimiento, Date createdAt, Date updatedAt) {
-        this.id = id;
-        this.nombre = nombre;
+    public Empresa(String nombreEmpresa, String telefonoEmpresa, String NIT, String direccionEmpresa, List<Empleado> usuario, List<MovimientoDinero> movimiento, Date createdAt, Date updatedAt) {
+        this.nombreEmpresa = nombreEmpresa;
+        this.telefonoEmpresa = telefonoEmpresa;
         this.NIT = NIT;
-        this.telefono = telefono;
-        this.direccion = direccion;
+        this.direccionEmpresa = direccionEmpresa;
         this.usuario = usuario;
         this.movimiento = movimiento;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
 
-    public Long getId() {
-        return id;
+    public Long getIdEmpresa() {
+        return idEmpresa;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIdEmpresa(Long idEmpresa) {
+        this.idEmpresa = idEmpresa;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getNombreEmpresa() {
+        return nombreEmpresa;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNombreEmpresa(String nombreEmpresa) {
+        this.nombreEmpresa = nombreEmpresa;
     }
 
-    public String getTelefono() {
-        return telefono;
+    public String getTelefonoEmpresa() {
+        return telefonoEmpresa;
     }
 
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
+    public void setTelefonoEmpresa(String telefonoEmpresa) {
+        this.telefonoEmpresa = telefonoEmpresa;
     }
 
     public String getNIT() {
@@ -82,12 +83,12 @@ public class Empresa {
         this.NIT = NIT;
     }
 
-    public String getDireccion() {
-        return direccion;
+    public String getDireccionEmpresa() {
+        return direccionEmpresa;
     }
 
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
+    public void setDireccionEmpresa(String direccionEmpresa) {
+        this.direccionEmpresa = direccionEmpresa;
     }
 
     public List<Empleado> getUsuario() {

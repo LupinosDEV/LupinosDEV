@@ -6,8 +6,9 @@ import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfi
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@SpringBootApplication (exclude = {SecurityAutoConfiguration.class})
+@SpringBootApplication
 public class LupinosDevApplication {
+
 	public static void main(String[] args) {
 		SpringApplication.run(LupinosDevApplication.class, args);
 	}
