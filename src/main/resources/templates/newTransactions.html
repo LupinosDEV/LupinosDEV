@@ -45,8 +45,8 @@
     <div class="col-md-6">
       <label for="empleado">Employee</label>
       <div>
-        <select th:field="*{empleado}" class="form-control" id="empleado" required="required">
-          <option th:each="employee : ${employeeslist}" th:text="${employee.nombreEmpleado}" th:value="${employee.id}"></option>
+        <select th:field="*{empleado}" class="form-control" id="empleado" required="required" readonly>
+          <option  th:text="${#httpServletRequest.remoteUser}" th:value="${idUser}"></option>
         </select>
       </div>
     </div>

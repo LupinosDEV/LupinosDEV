@@ -13,16 +13,16 @@
     body{
     background-color: #EAE7E7;
     }
+    a{
+    display:block;}
   </style>
 </head>
 <body>
-<div sec:authorize="!isAuthenticated()">
-  <a th:href="@{/oauth2/authorization/auth0}">Log In</a>
-</div>
+<a th:href="@{/users}">Lista de usuarios</a>
+<a th:href="@{/movements/?page=0}">Lista de Movimientos</a>
+<a th:href="@{/enterprises}">Lista de Empresas</a>
 
+<button type="button" class="btn btn-info"><a th:href="@{/logout}">Log out</a></button>
 
-<div sec:authorize="isAuthenticated()">
-  <a th:href="@{/movements}">ver movimientos empresa</a>
-</div>
 </body>
 </html>

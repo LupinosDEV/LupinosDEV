@@ -43,5 +43,8 @@ public class MovimientoDineroServices {
     public Long sumAllMovements(){
         return movimientoDineroRepository.sumMovements();
     }
+    public Long IdEmail(String email){
+        return movimientoDineroRepository.IdEmail(email);
+    }
 
 }

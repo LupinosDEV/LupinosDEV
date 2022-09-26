@@ -8,10 +8,10 @@ import co.edu.udea.LupinosDEV.services.UsuariosService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.oauth2.core.oidc.user.OidcUser;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -27,10 +27,6 @@ public class MovimientoDineroController {
     @Autowired
     MovimientoDineroRepository movimientoDineroRepository;
 
-    @GetMapping("/")
-    public String home(Model model, @AuthenticationPrincipal OidcUser principal) {
-        return "index";
-    }
 
     //listá todos los movimientos
     @GetMapping("/movements")
@@ -69,8 +65,11 @@ public class MovimientoDineroController {
         MovimientoDinero transaction= new MovimientoDinero();
         model.addAttribute("newTransaction",transaction);
         model.addAttribute("alert",alert);
-        List<Empleado> employeeList= usuariosService.getAllUsers();
-        model.addAttribute("employeeslist",employeeList);
+
+        Authentication auth= SecurityContextHolder.getContext().getAuthentication();
+        String email = auth.getName();
+        Long idEmployee = movimientoDineroServices.IdEmail(email);
+        model.addAttribute("idUser",idEmployee);
         return "newTransactions";
     }
     @PostMapping("/saveTransaction")

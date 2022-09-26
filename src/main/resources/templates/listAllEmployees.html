@@ -42,7 +42,12 @@
 <div class="container">
   <br>
   <h1 class="title">All Employees</h1>
+  <button type="button" class="btn btn-info"><a th:href="@{/logout}">Log out</a></button>
   <button type="button" class="btn btn-success right"><a th:href="@{/addEmployee}">New Employee</a></button>
+  <!--ATRAS-->
+  <div class="back">
+    <a href="javascript: history.go(-1)" class="btn btn- btn-success" role="button">Back</a>
+  </div>
   <div class="table-responsive">
     <table class="table table-bordered table-hover table-condensed">
       <tr>
@@ -66,13 +71,13 @@
         <td><button type="button" class="btn btn-"><a>Profile</a></button></td>
         <td th:text="${empleado.empresa.nombreEmpresa}">
         <td><button type="button" class="btn btn-"><a>Movements</a></button></td>
-        <td th:if="${empleado.rol=='ROLE_ADMIN'}">Administrativo</td>
-        <td th:if="${empleado.rol=='ROLE_USER'}">Operativo</td>
+        <td th:if="${empleado.rol=='ROLE_ADMIN'}">Admin</td>
+        <td th:if="${empleado.rol=='ROLE_USER'}">User</td>
         <td th:if="${empleado.condition==true}">Activo</td>
         <td th:if="${empleado.condition==false}">Inactivo</td>
         <td th:text="${empleado.createdAt}"></td>
         <td th:text="${empleado.updatedAt}"></td>
-        <td><button type="button" class="btn btn-warning"><a>Edit</a></button></td>
+        <td><button type="button" class="btn btn-warning"><a th:href="@{/EditEmployee/{id}(id=${empleado.id})}">Edit</a></button></td>
         <td><button type="button" class="btn btn-danger"><a>Delete</a></button></td>
       </tr>
 

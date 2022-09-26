@@ -15,7 +15,12 @@
 <div class="container">
     <br>
     <h1 class="title">Enterprises</h1>
+    <!--ATRAS-->
+    <div class="back">
+        <a href="javascript: history.go(-1)" class="btn btn- btn-success" role="button">Back</a>
+    </div>
     <button type="button" class="btn btn-success right"><a th:href="@{/addEnterprise}">New Enterprise</a></button>
+    <button type="button" class="btn btn-info"><a th:href="@{/logout}">Log out</a></button>
     <div class="table-responsive">
         <table class="table table-bordered table-hover table-condensed">
             <tr>

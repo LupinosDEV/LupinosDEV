@@ -36,14 +36,26 @@
     background-color:#A59F9F;
     border-color: inherit;
     }
+    .user{
+      border: 1px solid #550D52;
+      margin: 0px 3px;
+      padding: 6px 3px;
+    }
+    .buttoms{
+    height: 50px;
+    }
   </style>
 </head>
 <body>
 <div class="container">
   <br>
   <h1 class="title">All transactions</h1>
-  <button type="button" class="btn btn-success right"><a th:href="@{/addTransaction}">New Transaction</a></button>
-  <div class="table-responsive">
+  <div class="buttoms">
+    <button type="button" class="btn btn-info right"><a th:href="@{/logout}">Log out</a></button>
+    <p th:inline="text" class="right user">[[${#httpServletRequest.remoteUser}]]</p>
+    <button type="button" class="btn btn-success right"><a th:href="@{/addTransaction}">New Transaction</a></button>
+  </div>
+    <div class="table-responsive">
     <table class="table table-bordered table-hover table-condensed">
       <tr>
         <th>ID</th>
@@ -80,7 +92,12 @@
         </li>
       </ul>
     </nav>
-
+      <button type="button" class="btn btn-success"><a th:href="@{/users}">Lista de usuarios</a></button>
+      <button type="button" class="btn btn-success"><a th:href="@{/enterprises}">Lista de Empresas</a></button>
+      <!--ATRAS-->
+      <div class="back">
+        <a href="javascript: history.go(-1)" class="btn btn- btn-success" role="button">Back</a>
+      </div>
 
   </div>
 </div>
