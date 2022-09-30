@@ -10,17 +10,19 @@ import java.util.Date;
 @Table(name = "Empleado")
 public class Empleado {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;//individual para cada entidad
+    @Column(name = "nombreEmpleado", nullable = false, length = 50)
     private String nombreEmpleado;
+    @Column(name = "correoEmpleado", nullable = false, length = 50)
     private String correoEmpleado;
     @OneToOne
     @JoinColumn(name="profile_id")
-    private Profile profile;
+    private Profile profile;//id de la entidad Profile
 
     @ManyToOne
     @JoinColumn(name="empresa_id")
-    private Empresa empresa;
+    private Empresa empresa;//id de la entidad Empresa
     private  ArrayList<MovimientoDinero> movimientoDinero;
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private Date updatedAt;
